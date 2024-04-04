@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-DNS-Prefetch-Control" content="off">
+  <title>Approval Confirmation</title>
+  <link href="https://fonts.googleapis.com/css?family=Axiforma" rel="stylesheet"> 
+  <style>
+    body {
+      font-family: 'Axiforma', sans-serif;
+      color: #1f3c4e;
+      background-color: #f1f3f3;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo img {
+      max-width: 40%;
+      height: auto;
+      opacity: 0;
+      animation: fadeInLogo 2s ease-in-out forwards;
+    }
+
+    h1 {
+      color: #83D4C0; /* Adjusted color for Dutch text */
+      transition: opacity 1.5s ease-in-out; /* Speed up the transition */
+      opacity: 1;
+    }
+
+    p {
+      transition: opacity 1.5s ease-in-out; /* Ensured same transition timing for consistency */
+      opacity: 1;
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    .accent {
+      color: #ff6663;
+      font-size: smaller;
+    }
+
+    @keyframes fadeInLogo {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <img src="https://139550101.fs1.hubspotusercontent-eu1.net/hub/139550101/hubfs/TaxMate_Full_Logo_Regular-2.png?width=1120&upscale=true&name=TaxMate_Full_Logo_Regular-2.png" alt="Company Logo">
+  </div>
+  <h1 id="message">Bedankt voor het doorgeven!</h1>
+  <p id="subMessage" class="accent">Thanks for accepting the return!</p>
+  <script>
+    function fadeOut(element) {
+      element.classList.add('hidden');
+    }
+
+    function fadeIn(element, newText) {
+      setTimeout(() => {
+        element.textContent = newText;
+        element.classList.remove('hidden');
+      }, 1000); // Adjusted to match the speeded-up transition
+    }
+
+    function changeTexts() {
+      const message = document.getElementById('message');
+      const subMessage = document.getElementById('subMessage');
+      fadeOut(message);
+      fadeOut(subMessage);
+
+      // Adjusted timing for quicker transition
+      setTimeout(() => {
+        fadeIn(message, 'We zullen de btw aangifte voor je insturen');
+        fadeIn(subMessage, "We'll submit the VAT return for you");
+      }, 1000); // Shorter delay to speed up the transition
+    }
+
+    // Adjusted to start the transition a bit earlier
+    setTimeout(changeTexts, 2000); // Slightly earlier start for the transition
+  </script>
+</body>
+</html>
